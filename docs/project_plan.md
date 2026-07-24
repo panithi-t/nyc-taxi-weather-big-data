@@ -1,6 +1,5 @@
 # Project Plan
-
-**Course:** CS-675 Big Data Analytics at Cloud Scale  
+ 
 **Project Title:** Cloud-Scale Analysis of NYC Taxi Operations Under Different Weather Conditions  
 **Author:** Panithi Tawethipong
 
