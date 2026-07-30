@@ -32,7 +32,7 @@ Most transit analyses stop at "how does weather affect trip volume?" **This proj
 ## 3. Finding 1: Volume vs. Wealth
 *Do neighborhoods of different wealth brackets experience disproportionate drops in service?*
 
-![w:800 center](/Users/panithi/Documents/dev_projects/nyc-taxi-weather-big-data/visualizations/q1_resilience.png)
+![w:800 center](./visualizations/q1_resilience.png)
 
 **Insight:** All areas suffer during heavy rain/snow. However, High Wealth areas maintain a baseline of ~3,500 trips, whereas Low Wealth areas drop to near zero.
 
@@ -41,7 +41,7 @@ Most transit analyses stop at "how does weather affect trip volume?" **This proj
 ## 4. Finding 2: Tipping Surges
 *Does weather severity affect tipping percentages?*
 
-![w:800 center](/Users/panithi/Documents/dev_projects/nyc-taxi-weather-big-data/visualizations/q2_tips.png)
+![w:800 center](./visualizations/q2_tips.png)
 
 **Insight:** Low Wealth areas experience a massive spike in tipping during Light Rain (jumping from 15% to 38%), whereas High Wealth areas remain steady at ~21%.
 
@@ -50,7 +50,7 @@ Most transit analyses stop at "how does weather affect trip volume?" **This proj
 ## 5. Finding 3: Property Type & Airport Travel
 *Do neighborhoods dominated by large single-family homes show different travel patterns than dense condo/co-op areas?*
 
-![w:800 center](/Users/panithi/Documents/dev_projects/nyc-taxi-weather-big-data/visualizations/q3_airports.png)
+![w:800 center](./visualizations/q3_airports.png)
 
 **Insight:** By correlating wealth tiers to property types, I found that high-value single-family townhouse/co-op areas generated 37,927 clear-weather airport trips compared to just 5,667 from high-density, low-wealth condo areas. Furthermore, high-density areas dropped at a much sharper rate during extreme weather.
 
@@ -58,7 +58,7 @@ Most transit analyses stop at "how does weather affect trip volume?" **This proj
 
 ## 6. Finding 4: The Pricing Squeeze
 
-![w:800 center](/Users/panithi/Documents/dev_projects/nyc-taxi-weather-big-data/visualizations/q4_pricing_surge.png)
+![w:800 center](./visualizations/q4_pricing_surge.png)
 
 **Insight:** Low Wealth areas see the highest fare-per-minute cost during Heavy Rain ($2.31/min compared to $1.78/min on clear days).
 
@@ -66,7 +66,7 @@ Most transit analyses stop at "how does weather affect trip volume?" **This proj
 
 ## 7. Finding 5: Macro Operations
 
-![w:800 center](/Users/panithi/Documents/dev_projects/nyc-taxi-weather-big-data/visualizations/q5_general_ops.png)
+![w:800 center](./visualizations/q5_general_ops.png)
 
 **Insight:** Heavy Rain crashes total trip volume (2.1M -> 4,700), but the empty roads cause average taxi speeds to jump from 13.7 MPH to nearly 20 MPH.
 

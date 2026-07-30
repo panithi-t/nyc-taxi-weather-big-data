@@ -13,26 +13,26 @@ My data engineering pipeline consisted of two major phases:
 
 #### Finding 1: System Resilience and Wealth (Q1)
 *Do neighborhoods of different wealth brackets experience disproportionate drops in service during bad weather?*
-![Q1 Visualization](/Users/panithi/Documents/dev_projects/nyc-taxi-weather-big-data/visualizations/q1_resilience.png)
+![Q1 Visualization](./visualizations/q1_resilience.png)
 **Analysis:** Trip volumes plummet universally during heavy rain and snow events. However, High Wealth neighborhoods maintain a baseline of service (~3,500 trips) while Low Wealth areas drop to near zero (~1,100 trips), indicating a slight availability bias toward wealthier areas during extreme events.
 
 #### Finding 2: Tipping Behavior Surges (Q2)
 *Does weather severity affect tipping percentages differently across wealth brackets?*
-![Q2 Visualization](/Users/panithi/Documents/dev_projects/nyc-taxi-weather-big-data/visualizations/q2_tips.png)
+![Q2 Visualization](./visualizations/q2_tips.png)
 **Analysis:** High Wealth areas maintain a very steady tipping average of ~21% regardless of the weather. Fascinatingly, Low Wealth areas experience a massive spike in tipping during Light Rain, jumping from an average of 15% to 38%! Passengers in lower-income areas appear to heavily overcompensate drivers for working in sub-optimal conditions.
 
 #### Finding 3: Property Type & Airport Travel Disparities (Q3)
 *Do neighborhoods dominated by large single-family homes/townhouses show different travel patterns to airports during bad weather than dense condo/co-op areas?*
-![Q3 Visualization](/Users/panithi/Documents/dev_projects/nyc-taxi-weather-big-data/visualizations/q3_airports.png)
+![Q3 Visualization](./visualizations/q3_airports.png)
 **Analysis:** By mapping property types to our wealth tiers, I found that High Wealth originations (heavily correlated with single-family townhouses and luxury co-ops) completely dominate airport drop-offs (JFK, LaGuardia, Newark). These lower-density, high-value areas generated 37,927 clear-weather airport trips compared to just 5,667 from Low Wealth, high-density areas. Furthermore, airport travel from high-density condo areas dropped at a much sharper rate during extreme weather.
 
 #### Finding 4: The Cost of Bad Weather (Q4)
 *How does weather impact the fare per minute (pricing surge)?*
-![Q4 Visualization](/Users/panithi/Documents/dev_projects/nyc-taxi-weather-big-data/visualizations/q4_pricing_surge.png)
+![Q4 Visualization](./visualizations/q4_pricing_surge.png)
 **Analysis:** Traffic conditions and pricing dynamics shift wildly in extreme weather. Low Wealth areas see the highest fare-per-minute cost during Heavy Rain ($2.31/min compared to $1.78/min on clear days).
 
 #### Finding 5: Empty Roads, High Speeds (Q5)
-![Q5 Visualization](/Users/panithi/Documents/dev_projects/nyc-taxi-weather-big-data/visualizations/q5_general_ops.png)
+![Q5 Visualization](./visualizations/q5_general_ops.png)
 **Analysis:** Looking at the city's macro-operations, Heavy Rain/Snow causes the total trip volume to crash from 2.1 Million down to ~4,700 trips in my sample timeframe. However, because the roads are essentially empty, the average speed of the few taxis on the road jumps from 13.7 MPH to nearly 20 MPH!
 ### 4. Synthesized Narrative: A Tale of Two Cities During a Storm
 
