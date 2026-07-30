@@ -9,9 +9,9 @@
 
 ## Background
 
-New York City generates millions of taxi trips every month, producing one of the largest publicly available urban transportation datasets. At the same time, weather conditions such as heavy rain, snow, extreme temperatures, and reduced visibility can significantly influence travel demand, traffic conditions, and passenger behavior. Understanding these relationships can help transportation agencies, fleet operators, and city planners better anticipate demand and improve operational efficiency.
+New York City generates millions of taxi trips every month, producing one of the largest publicly available urban transportation datasets. At the same time, weather conditions such as heavy rain, snow, extreme temperatures, and reduced visibility can significantly influence travel demand, traffic conditions, and passenger behavior. Furthermore, socio-economic factors like neighborhood wealth and real estate values add an additional layer of complexity to these patterns. Understanding these relationships can help transportation agencies, fleet operators, and city planners better anticipate demand and improve operational efficiency.
 
-This project will analyze large-scale NYC Yellow Taxi trip records together with historical New York City weather observations using Apache Spark. The analysis will first be developed locally using a small subset of the data and then deployed to AWS cloud infrastructure to process more than 100 million taxi trip records.
+This project will analyze large-scale NYC Yellow Taxi trip records together with historical New York City weather observations and Kaggle NYC housing market data using Apache Spark. The analysis will first be developed locally using a small subset of the data and then deployed to AWS cloud infrastructure to process more than 100 million taxi trip records.
 
 ## Project Objectives
 
@@ -25,7 +25,7 @@ The primary objectives of this project are:
 
 # 2. Datasets
 
-This project integrates three publicly available datasets that can be joined to analyze how weather influences taxi operations in New York City. The primary dataset consists of NYC Yellow Taxi trip records, while historical weather observations provide environmental context. A third lookup table maps taxi zone IDs to boroughs and neighborhoods for geographic analysis.
+This project integrates four publicly available datasets that can be joined to analyze how weather and socio-economic factors influence taxi operations in New York City. The primary dataset consists of NYC Yellow Taxi trip records, while historical weather observations provide environmental context. A housing market dataset provides local real estate values, and a fourth lookup table maps taxi zone IDs to boroughs and neighborhoods for geographic analysis.
 
 ---
 
@@ -98,6 +98,27 @@ This lookup table maps pickup and dropoff location IDs to geographic areas, allo
 
 ---
 
+## Dataset 4: NYC Housing Market Data (Kaggle)
+
+**Source:** Kaggle (nelgiriyewithana/new-york-housing-market)
+
+**Format:** CSV
+
+### Key Fields
+
+- PRICE
+- BEDS / BATH
+- PROPERTYSQFT
+- TYPE (Condo, Co-op, Townhouse)
+- LATITUDE / LONGITUDE
+- LOCALITY / SUBLOCALITY
+
+### Purpose
+
+This dataset provides socio-economic and real estate value indicators for different areas, allowing us to map wealth and property types to taxi demand behavior.
+
+---
+
 ## Dataset Integration
 
 The datasets will be integrated through two joins.
@@ -114,120 +135,104 @@ Round to hour
 Hourly weather observation
 ```
 
-### Geographic Join
+### Geographic & Spatial Join
 
-Taxi pickup and dropoff Location IDs will be joined with the Taxi Zone Lookup table to identify the corresponding borough and zone.
+Taxi pickup and dropoff Location IDs will be joined with the Taxi Zone Lookup table to identify the corresponding borough and zone. Concurrently, the Housing Market Data will be spatially joined to the Taxi Zones based on Latitude and Longitude to calculate median property values and types per zone.
 
-The resulting integrated dataset will enable analyses of taxi demand, revenue, trip duration, and passenger behavior under different weather conditions across New York City.
+The resulting integrated dataset will enable analyses of taxi demand, revenue, trip duration, and passenger behavior under different weather conditions and socio-economic contexts across New York City.
 
 # 3. Research Questions and Planned Analytics
 
-The primary goal of this project is to quantify how weather conditions affect taxi operations in New York City. Using Apache Spark, the integrated dataset will be analyzed through a series of large-scale aggregation, filtering, and join operations to identify meaningful patterns and trends.
+The primary goal of this project is to quantify how weather conditions and socio-economic factors affect taxi operations in New York City. Using Apache Spark, the integrated dataset will be analyzed through large-scale spatial joins, aggregation, and filtering.
 
 ---
 
 ## Research Question 1
 
-### How does weather affect hourly taxi demand?
+### Weather Resilience by Wealth
 
-This analysis investigates whether weather conditions influence the number of taxi trips requested throughout the day.
+Do high-value real estate neighborhoods show less variance in taxi demand during severe weather compared to lower-value areas?
 
 ### Planned Analytics
 
-- Count hourly taxi trips
-- Compare demand under different weather conditions
-- Analyze weekday versus weekend demand
-- Compare demand across different boroughs
+- Spatially join housing data with TLC Taxi Zones
+- Categorize neighborhoods by average property price
+- Compare hourly demand drop-offs during rain/snow across wealth tiers
 
 **Expected Output**
 
-- Hourly demand trends
-- Demand by weather category
-- Borough-level demand comparison
+- Demand elasticity curves by neighborhood wealth
+- Comparison of high vs low real estate value areas during storms
 
 ---
 
 ## Research Question 2
 
-### Does adverse weather increase trip duration?
+### The "Luxury Tip" Weather Effect
 
-Poor weather may slow traffic, resulting in longer travel times.
+How does tipping behavior change during adverse weather, and is the percentage increase significantly higher in wealthy neighborhoods?
 
 ### Planned Analytics
 
-- Calculate average trip duration
-- Compare normal weather versus rain and snow
-- Analyze duration by borough
-- Compare peak and off-peak hours
+- Calculate average tip percentage for trips dropping off in different zones
+- Analyze tip variance during bad weather, segmented by the destination's median property value
 
 **Expected Output**
 
-- Average trip duration by weather
-- Duration distribution
-- Borough comparison
+- Average tip percentage by weather condition and wealth tier
+- Tipping behavior heatmaps
 
 ---
 
 ## Research Question 3
 
-### How does weather affect travel speed?
+### Property Type & Airport Travel
 
-Estimated travel speed will be calculated using trip distance and trip duration.
+Do neighborhoods dominated by large single-family homes show different travel patterns to airports during bad weather than dense condo/co-op areas?
 
 ### Planned Analytics
 
-- Calculate average travel speed
-- Compare speed under different weather conditions
-- Analyze by borough
-- Compare rush-hour and non-rush-hour traffic
+- Use the `TYPE` and `PROPERTYSQFT` fields to categorize neighborhoods
+- Analyze trip volumes to JFK and LaGuardia during rain/snow
 
 **Expected Output**
 
-- Average speed by weather condition
-- Speed distribution
-- Peak-hour comparison
+- Airport travel volume comparisons across property types
 
 ---
 
 ## Research Question 4
 
-### How does weather influence taxi revenue?
+### Pricing Surge Tolerance
 
-Changes in demand and trip duration may affect total taxi revenue.
+When weather-induced delays increase fare costs (due to longer durations), are trips originating from high-price localities more resilient to these cost surges?
 
 ### Planned Analytics
 
-- Calculate total hourly revenue
-- Compare average fare
-- Compare average trip revenue
-- Analyze revenue by borough
+- Calculate weather-induced fare premiums (duration delays)
+- Measure the demand impact of these premiums across different neighborhood wealth tiers
 
 **Expected Output**
 
-- Revenue trends
-- Average fare comparison
-- Revenue by weather category
+- Price elasticity of demand across different weather conditions and wealth brackets
 
 ---
 
 ## Research Question 5
 
-### Does weather influence passenger tipping behavior?
+### General Operations
 
-Passenger behavior may change during adverse weather conditions.
+How does weather broadly affect hourly taxi demand, trip duration, and average travel speeds across the city?
 
 ### Planned Analytics
 
-- Calculate average tip amount
-- Calculate average tip percentage
-- Compare payment methods
-- Analyze tipping by weather condition
+- Calculate average trip duration and speed
+- Compare normal weather versus rain and snow city-wide
 
 **Expected Output**
 
-- Average tip percentage
-- Payment method comparison
-- Weather versus tipping analysis
+- Average trip duration and speed by weather condition
+- Speed distribution and peak-hour comparison
 
 ---
 
