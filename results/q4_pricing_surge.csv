@@ -1,0 +1,10 @@
+pickup_wealth,weather_severity,avg_fare_per_minute,avg_duration_min
+High,Clear/Cloudy,1.23,12.97
+High,Heavy Rain/Snow,1.59,10.67
+High,Light Rain,1.21,13.31
+Low,Clear/Cloudy,1.78,32.73
+Low,Heavy Rain/Snow,2.31,26.26
+Low,Light Rain,1.73,33.94
+Medium,Clear/Cloudy,1.2,31.36
+Medium,Heavy Rain/Snow,1.3,33.93
+Medium,Light Rain,1.09,35.0

@@ -1,0 +1,13 @@
+pickup_wealth,weather_severity,airport_trips
+,Clear/Cloudy,133
+,Heavy Rain/Snow,3
+,Light Rain,43
+High,Clear/Cloudy,37927
+High,Heavy Rain/Snow,316
+High,Light Rain,15461
+Low,Clear/Cloudy,5667
+Low,Heavy Rain/Snow,71
+Low,Light Rain,2144
+Medium,Clear/Cloudy,542
+Medium,Heavy Rain/Snow,10
+Medium,Light Rain,195

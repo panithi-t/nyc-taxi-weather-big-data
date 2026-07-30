@@ -1,0 +1,10 @@
+pickup_wealth,weather_severity,trip_count
+High,Clear/Cloudy,1868837
+High,Heavy Rain/Snow,3536
+High,Light Rain,654655
+Low,Clear/Cloudy,189702
+Low,Heavy Rain/Snow,1101
+Low,Light Rain,62936
+Medium,Clear/Cloudy,16569
+Medium,Heavy Rain/Snow,112
+Medium,Light Rain,4975

@@ -1,0 +1,10 @@
+pickup_wealth,weather_severity,avg_tip_percentage
+High,Clear/Cloudy,21.56
+High,Heavy Rain/Snow,19.7
+High,Light Rain,21.59
+Low,Clear/Cloudy,15.97
+Low,Heavy Rain/Snow,12.98
+Low,Light Rain,38.61
+Medium,Clear/Cloudy,6.96
+Medium,Heavy Rain/Snow,9.82
+Medium,Light Rain,6.36
