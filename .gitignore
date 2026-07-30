@@ -222,3 +222,5 @@ data/
 infrastructure/.terraform/
 infrastructure/terraform.tfstate*
 
+
+demo_script.md
