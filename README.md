@@ -8,15 +8,14 @@
 
 ## Project Overview
 
-This project investigates how weather conditions influence New York City's taxi operations using Apache Spark and AWS cloud infrastructure.
+This project investigates how weather conditions and neighborhood real estate values influence New York City's taxi operations using Apache Spark and AWS cloud infrastructure.
 
-By combining large-scale NYC Taxi & Limousine Commission (TLC) trip records with historical weather observations, this project analyzes how rain, snow, temperature, and other weather conditions affect:
+By combining large-scale NYC Taxi & Limousine Commission (TLC) trip records with historical weather observations and NYC housing market data, this project analyzes how rain, snow, temperature, and local wealth affect:
 
-- Taxi demand
-- Trip duration
-- Estimated travel speed
-- Revenue
-- Passenger tipping behavior
+- Taxi demand and resilience to severe weather
+- Trip duration and estimated travel speed
+- Revenue and socio-economic tipping behavior
+- Real estate-driven travel patterns
 
 The project is developed locally using Apache Spark before being deployed to AWS for cloud-scale analytics on over **100 million taxi trip records**.
 
@@ -24,13 +23,13 @@ The project is developed locally using Apache Spark before being deployed to AWS
 
 ## Research Questions
 
-This project aims to answer the following questions:
+This project aims to answer the following core questions:
 
-1. How does weather affect hourly taxi demand?
-2. Does adverse weather increase trip duration?
-3. How does weather affect average travel speed?
-4. How does weather influence taxi revenue?
-5. Does weather affect passenger tipping behavior?
+1. **Weather Resilience by Wealth:** Do high-value real estate neighborhoods show less variance in taxi demand during severe weather compared to lower-value areas?
+2. **The "Luxury Tip" Weather Effect:** How does tipping behavior change during adverse weather, and is the percentage increase significantly higher in wealthy neighborhoods?
+3. **Property Type & Airport Travel:** Do neighborhoods dominated by large single-family homes show different travel patterns to airports during bad weather than dense condo/co-op areas?
+4. **Pricing Surge Tolerance:** When weather-induced delays increase fare costs, are trips originating from high-price localities more resilient to these cost surges?
+5. **General Operations:** How does weather broadly affect hourly taxi demand, trip duration, and average travel speeds across the city?
 
 ---
 
@@ -65,7 +64,21 @@ Historical hourly weather observations including:
 
 ---
 
-### 3. NYC Taxi Zone Lookup
+### 3. NYC Housing Market Data (Kaggle)
+
+Dataset containing real estate listings across New York City.
+
+Example fields:
+- PRICE
+- BEDS / BATH
+- PROPERTYSQFT
+- TYPE (Condo, Co-op, Townhouse)
+- LATITUDE / LONGITUDE
+- LOCALITY / SUBLOCALITY
+
+---
+
+### 4. NYC Taxi Zone Lookup
 
 Lookup table mapping taxi zones to boroughs.
 
@@ -121,12 +134,11 @@ The preprocessing stage will include:
 
 Example analyses include:
 
-- Taxi demand by weather condition
-- Revenue by weather condition
-- Average trip duration
-- Average travel speed
-- Borough-level comparisons
-- Hourly demand trends
+- Spatial joins mapping housing coordinates to TLC Taxi Zones
+- Taxi demand resilience by weather and neighborhood real estate value
+- Tipping percentage variance segmented by weather and destination property value
+- Average trip duration and travel speed drops during adverse weather
+- Borough and neighborhood-level socio-economic comparisons
 
 ---
 
