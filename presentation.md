@@ -1,5 +1,5 @@
 # NYC Taxi & Weather Big Data Pipeline
-### Capstone Final Presentation
+### Presentation
 **Presented by:** Panithi Tawethipong
 
 ---
