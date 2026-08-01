@@ -1,13 +1,6 @@
----
-marp: true
-theme: default
-class: lead
-backgroundColor: #f4f6f8
----
-
 # NYC Taxi & Weather Big Data Pipeline
 ### Capstone Final Presentation
-**Presented by:** [Your Name]
+**Presented by:** Panithi Tawethipong
 
 ---
 
