@@ -35,7 +35,7 @@ When severe weather hits New York City, the transit system essentially collapses
 
 ---
 
-## Datasets Leveraged
+## Datasets
 
 1. **NYC TLC Yellow Taxi Trip Records:** Primary dataset containing millions of trips.
 2. **Historical NYC Weather (NOAA):** Hourly observations (temperature, precipitation, wind speed, etc.).
@@ -46,7 +46,6 @@ When severe weather hits New York City, the transit system essentially collapses
 
 ## Architecture, Extensions & Technology Stack
 
-**CS-675 Extensions Claimed:**
 - **Big Data at Real Scale:** Processed over 100+ million raw NYC Taxi records.
 - **Query-Performance Tuning:** Instead of uploading flat CSVs, I used PySpark to aggressively restructure, denormalize, and partition the data into columnar `.parquet` formats. This big-data technique exponentially reduced serverless query costs and runtime when executing Athena queries on the 100M+ row dataset.
 
